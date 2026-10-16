@@ -58,6 +58,34 @@ by CRG where noted:
 4. **Photos.** Add real installation photos to `images/photos/` and the gallery as projects
    are documented (see "Adding photos" below).
 
+## Search engines and launch
+
+The site is set up for **https://crgplay.com/** (replacing CRG's current WordPress site):
+
+- **Every page:** a canonical URL, share-preview tags (`images/og-image.jpg`, 1200×630) and
+  structured data describing CRG as a LocalBusiness (address, phone, email, hours, Indiana
+  service area, social profiles). Inner pages also carry breadcrumbs.
+- **`sitemap.xml` and `robots.txt`** point search engines at the five pages.
+- **`.htaccess`** (Apache, CRG's PHP host):
+  - permanent (301) redirects for all 64 addresses of the old WordPress site, each to its
+    closest new page; product pages go to their section, e.g. `/dog-parks/` →
+    `/products.html#dog-parks`
+  - a custom 404 page
+  - compression and caching
+  - blocks web access to the reCAPTCHA library's files
+- **`404.html`:** branded, `noindex`, with links back to Products, Projects and Contact.
+- **The GitHub Pages preview is `noindex`.** The deploy workflow adds the tag to the preview
+  copy only, so it never competes with crgplay.com in search results.
+
+At launch:
+1. Upload `site/` (including the hidden `.htaccess`) to the crgplay.com web root.
+2. Spot-check a few old addresses, e.g. `/about/`, `/play-systems/`, `/case-studies/cool-creek-park/`.
+3. In Google Search Console and Bing Webmaster Tools, submit `https://crgplay.com/sitemap.xml`.
+4. Check that the Google Business Profile shows the same address, phone and hours.
+
+If the domain ever changes, update `SITE_URL` in the page generator, or search and replace
+`https://crgplay.com/` in the HTML, `sitemap.xml` and `robots.txt`.
+
 ## Adding photos
 
 Pages serve each photo as responsive WebP (640/960/1280/1600px wide) with the JPEG as a

@@ -1,6 +1,7 @@
 # Publishes site/ to GitHub Pages on every push to main.
 # One-time setup: repo Settings → Pages → Source: "GitHub Actions".
-# Note: Pages is static hosting, so the quote form (PHP) can't send email there.
+# Note: Pages is static hosting, so the quote form offers its email/phone fallback there.
+# The preview is marked noindex; production (crgplay.com) is indexable.
 name: Deploy site to GitHub Pages
 
 on:
@@ -26,6 +27,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # This GitHub Pages copy is a preview of crgplay.com: keep it out of
+      # search results so it never competes with the real site, and point the
+      # 404 page's root-relative paths at the /<repo>/ subfolder Pages uses.
+      - name: Prepare preview (noindex, 404 paths)
+        env:
+          BASE: /${{ github.event.repository.name }}/
+        run: |
+          for f in site/*.html; do
+            sed -i 's#<head>#<head>\n<meta name="robots" content="noindex">#' "$f"
+          done
+          sed -i -E "s#(href|src|srcset|imagesrcset|data-src|data-srcset)=\"/#\1=\"${BASE}#g; s#, /images/#, ${BASE}images/#g" site/404.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

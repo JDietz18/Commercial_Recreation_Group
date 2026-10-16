@@ -26,26 +26,32 @@ Opening the HTML files straight from disk also works, but the quote form needs P
 Upload the contents of `site/` to any host with PHP 7.4+ and a working `mail()`
 (most shared hosting, e.g. cPanel). Without PHP the pages still work; only the form fails.
 
+## Content
+
+All copy uses CRG's real information, taken from crgplay.com in October 2026 and confirmed
+by CRG where noted:
+
+- phone, email, address, hours and social links
+- company history, leadership team and the 25 years of experience (confirmed by CRG; the
+  company changed ownership in 2020)
+- the Playcraft Systems partnership, product lines, certifications and Navitas financing
+- client testimonials and the case-study list
+
 ## Before launch
 
-1. **Quote form.** In `script/quote.php`, set `CRG_QUOTE_TO` (CRG's inbox) and `CRG_QUOTE_FROM`
-   (an address on CRG's own domain, so mail isn't marked as spam). The form has a hidden
-   honeypot field against spam bots. For stronger protection, add a Google reCAPTCHA v2
-   secret to `CRG_RECAPTCHA_SECRET`, then add the widget to `contact.html`:
+1. **Quote form.** `script/quote.php` delivers to `info@CRGplay.com`. Set `CRG_QUOTE_FROM`
+   to a real address on CRG's mail domain (it's currently `website@crgplay.com`), or mail
+   may land in spam. For stronger spam protection, add a Google reCAPTCHA v2 secret to
+   `CRG_RECAPTCHA_SECRET`, then add the widget to `contact.html`:
    `<div class="g-recaptcha" data-sitekey="…"></div>` plus
    `<script src="https://www.google.com/recaptcha/api.js" async defer></script>`.
-2. **Draft copy.** Add `?draft` to any page URL (e.g. `index.html?draft`) to outline every
-   piece of placeholder text in blue. That covers:
-   - phone, email, address and hours (header CTA band, footer, contact page)
-   - social links in the footer
-   - project titles (they describe the photos, not real project names or locations)
-   - product, process and values descriptions
-   - the About story, including the bracketed note to add CRG's history and manufacturers
+2. **Project names.** Five gallery photos are renders whose real project names aren't known
+   yet. They have descriptive titles marked `data-draft`; add `?draft` to a URL to outline
+   them. The Possibility Playground at Hayswood Nature Reserve is confirmed.
 3. **Copy check.** The "Who we serve" statement is CRG's own wording, word for word,
    including "that is need of", which probably should be "that is in need of".
-4. **Logos.** These are raster PNGs. Swap in SVG versions when CRG supplies vector files.
-5. **Photos.** The six photos are product renders. Add real project photos to
-   `images/photos/` and to the grid in `projects.html` as installs are documented.
+4. **Photos.** Add real installation photos to `images/photos/` and the gallery as projects
+   are documented.
 
 ## How it's put together
 
@@ -61,10 +67,12 @@ Load order in every page's `<head>`:
 | `css/crg-base.css` | CRG type, buttons, icons and theme-aware logos (from `brand/`) |
 | `css/crg-site.css` | Site layout and CRG components, including dark mode for Intera's parts |
 | `css/crg-motion.css` | Animations and transitions (paired with `js/crg-motion.js`) |
+| `css/crg-blueprint.css` | Blueprint background, animated header logo, site-wide pause button |
 
 Scripts: `js/combining.js` (Intera's jQuery bundle: Bootstrap, sticky header, mobile
 menu, masonry filter, lightbox, back-to-top), `js/theme.js` (light/dark toggle),
-`js/crg-site.js` (filter state, `?draft`), `js/crg-motion.js` (motion layer, below), and
+`js/crg-site.js` (filter state, `?draft`), `js/crg-motion.js` (motion layer, below),
+`js/crg-blueprint.js` (blueprint drawings), and
 `js/quote-form.js` on the contact page.
 
 ### Motion
@@ -90,6 +98,28 @@ Accessibility rules:
   or when the tab is in the background.
 - To tag a new element for a scroll reveal, add `data-reveal` to it, or add its selector to
   the lists at the top of `crg-motion.js`.
+
+### Blueprint background, logo and favicon
+
+- **Blueprint background:** a fixed layer behind the page. A faint drafting grid is pure CSS
+  (shows without JS), and a canvas sketches construction drawings that draw themselves, hold
+  and fade:
+  - dimension lines with feet-and-inch labels
+  - circles with radii, and compass arcs with angles
+  - footprints with hatching
+  - construction lines
+  - a drafting crosshair with coordinates that follows the mouse
+
+  New drawings favor the page margins, the ink is theme-aware and low-contrast, and cards and
+  colored bands stay solid, so text keeps full contrast. With reduced motion it's a single
+  still drawing.
+- **Header logo:** an inline SVG traced from the full-resolution logo PNG, so the wordmark
+  follows the light/dark theme. On the first page of a visit, the CRG letters draw their
+  outlines and fill, the divider grows and the wordmark slides in. On hover, the letters hop.
+- **Pause:** the header's pause button (and the hero's) stops the slideshow, the marquee and
+  the blueprint drawings on every page, and is remembered on this device.
+- **Favicon:** the orange mark on a Night square. Files: `favicon.ico` (16/32/48),
+  `images/favicon.svg`, and `images/apple-touch-icon.png` / `images/icon-192.png`.
 
 ### Changes made to Intera
 

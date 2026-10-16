@@ -24,7 +24,7 @@
   var SINGLE = [
     '.crg-section-head', '.crg-feature__body', '.crg-cta__inner', '.crg-contact',
     '.crg-quote-form', '.crg-about .col-lg-6:first-child', '.crg-serve .crg-eyebrow',
-    '.crg-filters', '.crg-section > .container > .crg-btn'
+    '.crg-filters', '.crg-section > .container > .crg-btn', '.crg-case__body', '.crg-case__aside'
   ];
   var WIPE = ['.crg-feature__media', '.crg-about__photo'];
   var STAGGER = [
@@ -33,7 +33,8 @@
     ['.crg-steps', ':scope > li'],
     ['.crg-serve__list', ':scope > li'],
     ['.crg-checks', ':scope > li'],
-    ['.crg-cases', ':scope > li'],
+    ['.crg-case-grid', ':scope > li'],
+    ['.crg-titleblock', ':scope > div'],
     ['.crg-team', ':scope > li'],
     ['.crg-footer .footer-top .row', ':scope > [class*="col-"]']
   ];

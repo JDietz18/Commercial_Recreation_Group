@@ -1,8 +1,0 @@
-/*
- * Intera's third-party CSS, trimmed for the CRG site. Replaces css/plugins.css.
- * Not loaded: the old Google Fonts import, the four icon fonts (icons are
- * Lucide SVGs, fonts are Barlow - see <head>), animate.css and the custom
- * scrollbar CSS, none of which the site uses.
- */
-@import url("../plugins/bootstrap/css/bootstrap.min.css");
-@import url("../plugins/magnific-popup/magnific-popup.css");

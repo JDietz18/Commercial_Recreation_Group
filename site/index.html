@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="css/skin/skin-crg.css">
 <link rel="stylesheet" href="css/crg-base.css">
 <link rel="stylesheet" href="css/crg-site.css">
+<link rel="stylesheet" href="css/crg-motion.css">
 </head>
 <body id="bg">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -49,8 +50,10 @@
   <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2" /> <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></symbol>
   <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="4" width="4" height="16" rx="1" /> <rect x="6" y="4" width="4" height="16" rx="1" /></symbol>
   <symbol id="i-pencil-ruler" viewBox="0 0 24 24"><path d="M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13" /> <path d="m8 6 2-2" /> <path d="m18 16 2-2" /> <path d="m17 11 4.3 4.3c.94.94.94 2.46 0 3.4l-2.6 2.6c-.94.94-2.46.94-3.4 0L11 17" /> <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /> <path d="m15 5 4 4" /></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol>
   <symbol id="i-school" viewBox="0 0 24 24"><path d="M14 22v-4a2 2 0 1 0-4 0v4" /> <path d="m18 10 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.382a1 1 0 0 1 .553-.894L6 10" /> <path d="M18 5v17" /> <path d="m4 6 7.106-3.553a2 2 0 0 1 1.788 0L20 6" /> <path d="M6 5v17" /> <circle cx="12" cy="9" r="2" /></symbol>
   <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol>
@@ -61,6 +64,7 @@
   <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></symbol>
 </svg>
 <a class="crg-skip" href="#main">Skip to content</a>
+<div class="crg-progress" aria-hidden="true"></div>
 <div class="page-wraper">
 <div id="loading-area"></div>
 <header class="site-header mo-left">
@@ -100,18 +104,25 @@
 <section class="crg-hero" aria-labelledby="hero-title">
     <div class="crg-hero__copy">
         <p class="crg-eyebrow">Indiana playground dealer</p>
-        <h1 id="hero-title" class="crg-display">Play spaces for every community</h1>
+        <h1 id="hero-title" class="crg-display" data-split>Play spaces for every community</h1>
         <p class="crg-body-lg crg-hero__lede">We are one of the largest commercial dealers for playground equipment in the state of Indiana.</p>
         <div class="crg-actions">
             <a href="contact.html" class="crg-btn crg-btn--primary">Start a project <svg class="crg-icon crg-icon--md" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
             <a href="projects.html" class="crg-btn crg-btn--outline">View projects</a>
         </div>
     </div>
-    <div class="crg-hero__photo">
-        <img class="crg-light-only" src="images/photos/asla-sunset.jpg" alt="Modern play structure with a round canopy at sunset" width="1600" height="900">
-        <img class="crg-dark-only" src="images/photos/getting-close-sketch.jpg" alt="Tensioned shade canopies over a splash plaza at dusk" width="1600" height="900">
+    <div class="crg-hero__photo" data-slideshow aria-roledescription="carousel" aria-label="Project photos">
+        <img class="crg-slide is-active" src="images/photos/asla-sunset.jpg" alt="Modern play structure with a round canopy at sunset" width="1600" height="900">
+        <img class="crg-slide" src="images/photos/main.jpg" alt="Playground with a green spiral slide, climbing wall and rope net" width="1600" height="900" loading="lazy" aria-hidden="true">
+        <img class="crg-slide" src="images/photos/color-book-cover.jpg" alt="Red barn-themed play structure in a field of sunflowers" width="1600" height="900" loading="lazy" aria-hidden="true">
+        <img class="crg-slide" src="images/photos/crisp-wet-morning.jpg" alt="Large timber-look play structure with towers and tube slides" width="1600" height="900" loading="lazy" aria-hidden="true">
+        <div class="crg-hero__controls">
+            <button type="button" class="crg-hero__dot" data-slide-to="0" aria-label="Show photo 1 of 4" aria-current="true"></button><button type="button" class="crg-hero__dot" data-slide-to="1" aria-label="Show photo 2 of 4" aria-current="false"></button><button type="button" class="crg-hero__dot" data-slide-to="2" aria-label="Show photo 3 of 4" aria-current="false"></button><button type="button" class="crg-hero__dot" data-slide-to="3" aria-label="Show photo 4 of 4" aria-current="false"></button>
+            <button type="button" class="crg-hero__pause" data-motion-pause aria-pressed="false" aria-label="Pause animations"><svg class="crg-icon crg-icon--md i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="crg-icon crg-icon--md i-play" aria-hidden="true"><use href="#i-play"/></svg></button>
+        </div>
     </div>
 </section>
+<div class="crg-audience-wrap">
 <ul class="crg-audience" aria-label="Who we serve">
             <li><svg class="crg-icon" aria-hidden="true"><use href="#i-school"/></svg><span>Schools</span></li>
             <li><svg class="crg-icon" aria-hidden="true"><use href="#i-church"/></svg><span>Churches</span></li>
@@ -119,12 +130,19 @@
             <li><svg class="crg-icon" aria-hidden="true"><use href="#i-baby"/></svg><span>Daycares</span></li>
             <li><svg class="crg-icon" aria-hidden="true"><use href="#i-trees"/></svg><span>Parks</span></li>
             <li><svg class="crg-icon" aria-hidden="true"><use href="#i-house"/></svg><span>HOAs</span></li>
+            <li class="crg-dup" aria-hidden="true"><svg class="crg-icon" aria-hidden="true"><use href="#i-school"/></svg><span>Schools</span></li>
+            <li class="crg-dup" aria-hidden="true"><svg class="crg-icon" aria-hidden="true"><use href="#i-church"/></svg><span>Churches</span></li>
+            <li class="crg-dup" aria-hidden="true"><svg class="crg-icon" aria-hidden="true"><use href="#i-building-2"/></svg><span>Apartments</span></li>
+            <li class="crg-dup" aria-hidden="true"><svg class="crg-icon" aria-hidden="true"><use href="#i-baby"/></svg><span>Daycares</span></li>
+            <li class="crg-dup" aria-hidden="true"><svg class="crg-icon" aria-hidden="true"><use href="#i-trees"/></svg><span>Parks</span></li>
+            <li class="crg-dup" aria-hidden="true"><svg class="crg-icon" aria-hidden="true"><use href="#i-house"/></svg><span>HOAs</span></li>
 </ul>
+</div>
 
 <section class="section-full crg-serve" aria-labelledby="serve-title">
     <div class="container">
         <p class="crg-eyebrow">Who we serve</p>
-        <h2 id="serve-title" class="crg-h1 crg-serve__statement">Are you part of a school, church, apartment complex, daycare, park, HOA or any other entity that is need of commercial recreational products? We are one of the largest commercial dealers for playground equipment in the state of Indiana.</h2>
+        <h2 id="serve-title" class="crg-h1 crg-serve__statement" data-scrub-words>Are you part of a school, church, apartment complex, daycare, park, HOA or any other entity that is need of commercial recreational products? We are one of the largest commercial dealers for playground equipment in the state of Indiana.</h2>
         <a href="about.html" class="crg-btn crg-btn--light">About CRG <svg class="crg-icon crg-icon--md" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
     </div>
 </section>
@@ -279,7 +297,7 @@
     </div>
 </section>
 
-<section class="section-full crg-cta" aria-labelledby="cta-title">
+<section class="section-full crg-cta" aria-labelledby="cta-title" data-parallax>
     <img class="crg-cta__photo" src="images/photos/crisp-wet-morning.jpg" alt="" loading="lazy">
     <div class="crg-scrim"></div>
     <div class="container">
@@ -358,5 +376,6 @@
 <script src="js/combining.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/crg-site.js"></script>
+<script src="js/crg-motion.js"></script>
 </body>
 </html>

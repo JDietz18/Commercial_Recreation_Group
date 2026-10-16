@@ -60,10 +60,36 @@ Load order in every page's `<head>`:
 | `css/skin/skin-crg.css` | Maps Intera's CSS variables and headings to CRG (from `brand/`) |
 | `css/crg-base.css` | CRG type, buttons, icons and theme-aware logos (from `brand/`) |
 | `css/crg-site.css` | Site layout and CRG components, including dark mode for Intera's parts |
+| `css/crg-motion.css` | Animations and transitions (paired with `js/crg-motion.js`) |
 
 Scripts: `js/combining.js` (Intera's jQuery bundle: Bootstrap, sticky header, mobile
 menu, masonry filter, lightbox, back-to-top), `js/theme.js` (light/dark toggle),
-`js/crg-site.js` (filter state, `?draft`), and `js/quote-form.js` on the contact page.
+`js/crg-site.js` (filter state, `?draft`), `js/crg-motion.js` (motion layer, below), and
+`js/quote-form.js` on the contact page.
+
+### Motion
+
+`js/crg-motion.js` and `css/crg-motion.css` add:
+
+- **Hero:** headline rises in word by word, the photo wipes in on its diagonal cut, and a
+  crossfading slideshow of four photos with a slow zoom. Dots and a pause button sit on the photo.
+- **Audience strip:** becomes a marquee that pauses on hover or focus.
+- **"Who we serve":** the statement lights up word by word as you scroll.
+- **Scrolling:** sections, cards and photos reveal in staggered order, and feature photos wipe in.
+  An orange progress bar runs along the top, and the header hides on scroll down and returns on scroll up.
+- **Photos:** parallax on banners and the CTA band, and 3D tilt with glare on project cards (mouse only).
+- **How we work:** a line draws across the steps.
+- **Products:** the category bar sticks under the header and underlines the section in view.
+- **Theme toggle:** a circular reveal from the button. Page-to-page navigation cross-fades
+  (View Transitions; Chrome and Edge).
+
+Accessibility rules:
+- Nothing animates for visitors who set "reduce motion" in their system settings, or when JavaScript is off.
+- Content is never hidden without JS, so print, screen readers and search engines see everything.
+- Anything that moves on its own stops with the hero's pause button, and also pauses on hover
+  or when the tab is in the background.
+- To tag a new element for a scroll reveal, add `data-reveal` to it, or add its selector to
+  the lists at the top of `crg-motion.js`.
 
 ### Changes made to Intera
 

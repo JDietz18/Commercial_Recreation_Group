@@ -1,0 +1,288 @@
+/*
+ * CRG motion layer — pairs with js/crg-motion.js.
+ * Most rules apply only under html.crg-motion, which the script adds when
+ * the visitor hasn't asked for reduced motion. Without it the page is static.
+ */
+
+:root {
+  --crg-ease-out: cubic-bezier(.2, .7, .2, 1);
+  --crg-ease-in-out: cubic-bezier(.7, 0, .2, 1);
+}
+
+/* Page-to-page cross-fade (Chrome/Edge; others just navigate) -------- */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: .35s; }
+
+/* Theme toggle: circular reveal from the button ---------------------- */
+html.crg-theme-vt::view-transition-old(root),
+html.crg-theme-vt::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+html.crg-theme-vt::view-transition-new(root) { animation: crg-circle-in .6s var(--crg-ease-in-out); }
+@keyframes crg-circle-in {
+  from { clip-path: circle(0 at var(--vt-x, 100%) var(--vt-y, 0)); }
+  to   { clip-path: circle(150vmax at var(--vt-x, 100%) var(--vt-y, 0)); }
+}
+
+/* Read progress bar ---------------------------------------------------- */
+.crg-progress { display: none; }
+.crg-motion .crg-progress {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 10001;
+  background: var(--crg-primary);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* Header hides on scroll down, returns on scroll up ------------------- */
+.crg-motion .sticky-header .main-bar { transition: transform .35s var(--crg-ease-out), background-color .2s; }
+.crg-motion .sticky-header.is-fixed.crg-header-hidden .main-bar { transform: translateY(-100%); }
+
+/* Scroll reveals ------------------------------------------------------- */
+.crg-motion [data-reveal] {
+  opacity: 0;
+  translate: 0 28px;
+  transition:
+    opacity .7s ease var(--reveal-delay, 0ms),
+    translate .8s var(--crg-ease-out) var(--reveal-delay, 0ms);
+}
+.crg-motion [data-reveal].is-revealed { opacity: 1; translate: none; }
+
+.crg-motion [data-reveal="wipe"] {
+  opacity: 1;
+  translate: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s var(--crg-ease-in-out) var(--reveal-delay, 0ms);
+}
+.crg-motion [data-reveal="wipe"].is-revealed { clip-path: inset(0 0 0 0); }
+.crg-motion .crg-feature--flip [data-reveal="wipe"] { clip-path: inset(0 0 0 100%); }
+.crg-motion .crg-feature--flip [data-reveal="wipe"].is-revealed { clip-path: inset(0 0 0 0); }
+
+/* Headline words rise in --------------------------------------------- */
+.crg-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: .08em;
+  margin-bottom: -.08em;
+}
+.crg-word > span { display: inline-block; }
+.crg-motion [data-split] .crg-word > span { transform: translateY(110%); }
+.crg-motion [data-split].is-split-in .crg-word > span {
+  transform: none;
+  transition: transform .9s var(--crg-ease-out) calc(var(--i) * 80ms + 120ms);
+}
+.crg-motion .crg-hero__copy > :not(h1) {
+  opacity: 0;
+  translate: 0 16px;
+  animation: crg-rise .8s var(--crg-ease-out) forwards;
+}
+.crg-motion .crg-hero__copy > .crg-eyebrow { animation-delay: .05s; }
+.crg-motion .crg-hero__copy > .crg-hero__lede { animation-delay: .55s; }
+.crg-motion .crg-hero__copy > .crg-actions { animation-delay: .7s; }
+@keyframes crg-rise { to { opacity: 1; translate: none; } }
+
+/* "Who we serve" lights up as you scroll ------------------------------ */
+.is-scrubbing .crg-scrub { opacity: .3; transition: opacity .35s ease; }
+.is-scrubbing .crg-scrub.is-lit { opacity: 1; }
+
+/* Hero slideshow ------------------------------------------------------- */
+.crg-hero__photo { overflow: hidden; }
+.crg-slide { opacity: 0; transition: opacity 1.2s ease; }
+.crg-slide.is-active { opacity: 1; }
+.crg-motion .crg-slide.is-active { animation: crg-kenburns 9s ease-out both; }
+.crg-paused .crg-slide.is-active { animation-play-state: paused; }
+@keyframes crg-kenburns { from { transform: scale(1.1); } to { transform: scale(1); } }
+.crg-motion .crg-hero__photo { animation: crg-wipe-in 1.2s var(--crg-ease-in-out) .15s both; }
+@keyframes crg-wipe-in {
+  from { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
+  to   { clip-path: var(--hero-cut); }
+}
+
+.crg-hero__controls {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(31, 27, 28, .72);
+}
+.crg-slideshow-ready .crg-hero__controls { display: flex; }
+.crg-hero__dot {
+  width: 28px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+.crg-hero__dot::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  background: rgba(255, 255, 255, .45);
+  transition: background-color .2s;
+}
+.crg-hero__dot[aria-current="true"]::before { background: var(--crg-orange-500); }
+.crg-hero__dot:hover::before { background: #fff; }
+.crg-hero__pause {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.crg-hero__pause .i-play { display: none; }
+.crg-paused .crg-hero__pause .i-play { display: block; }
+.crg-paused .crg-hero__pause .i-pause { display: none; }
+.crg-hero__controls button:focus-visible { outline: 3px solid #fff; outline-offset: 1px; }
+
+/* Audience strip becomes a marquee ------------------------------------ */
+.crg-audience-wrap { background: var(--crg-surface); border-top: 1px solid var(--crg-line); border-bottom: 1px solid var(--crg-line); }
+.crg-audience-wrap .crg-audience { border: 0; }
+.crg-audience .crg-dup { display: none; }
+.crg-motion .crg-audience-wrap { overflow: hidden; }
+.crg-motion .crg-audience-wrap .crg-audience {
+  display: flex;
+  width: max-content;
+  animation: crg-marquee 38s linear infinite;
+}
+.crg-motion .crg-audience .crg-dup { display: flex; }
+.crg-motion .crg-audience li { padding: 18px 36px; white-space: nowrap; }
+.crg-motion .crg-audience li::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-left: 36px;
+  background: var(--crg-primary);
+  transform: rotate(45deg);
+}
+.crg-motion .crg-audience-wrap:hover .crg-audience,
+.crg-motion .crg-audience-wrap:focus-within .crg-audience,
+.crg-paused .crg-audience-wrap .crg-audience { animation-play-state: paused; }
+@keyframes crg-marquee { to { transform: translateX(-50%); } }
+
+/* Parallax photos ------------------------------------------------------ */
+.crg-motion [data-parallax] .crg-banner__photo,
+.crg-motion [data-parallax] .crg-cta__photo {
+  top: -70px;
+  height: calc(100% + 140px);
+  transform: translate3d(0, var(--parallax, 0px), 0);
+  will-change: transform;
+}
+
+/* Cards: accent bar + icon kick on hover ------------------------------ */
+a.crg-card { position: relative; overflow: hidden; }
+a.crg-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--crg-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s var(--crg-ease-out);
+}
+a.crg-card:hover::after, a.crg-card:focus-visible::after { transform: scaleX(1); }
+.crg-card__icon { transition: transform .4s var(--crg-ease-out), background-color .2s; }
+a.crg-card:hover .crg-card__icon { transform: rotate(-8deg) scale(1.08); background: var(--crg-primary-hover); }
+.crg-card__more .crg-icon,
+.crg-btn .crg-icon:last-child { transition: transform .25s var(--crg-ease-out); }
+a.crg-card:hover .crg-card__more .crg-icon,
+.crg-btn:hover .crg-icon:last-child:not(:first-child) { transform: translateX(4px); }
+
+/* Project cards: 3D tilt + glare (mouse only, set by JS) -------------- */
+.crg-project { position: relative; transform-style: preserve-3d; }
+.crg-motion .crg-project {
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform .5s var(--crg-ease-out), border-color .2s, opacity .7s ease var(--reveal-delay, 0ms), translate .8s var(--crg-ease-out) var(--reveal-delay, 0ms);
+}
+.crg-motion .crg-project:hover { transition: transform .12s linear, border-color .2s; }
+.crg-project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, .22), transparent 55%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.crg-motion .crg-project:hover::after { opacity: 1; }
+
+/* How we work: line draws across the steps ----------------------------- */
+.crg-steps { position: relative; }
+@media (min-width: 992px) {
+  .crg-motion .crg-steps::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    height: 2px;
+    background: var(--crg-primary);
+    transform: scaleX(var(--line, 0));
+    transform-origin: left;
+    z-index: 1;
+  }
+}
+.crg-step .crg-icon { transition: transform .4s var(--crg-ease-out); }
+.crg-step:hover .crg-icon { transform: translateY(-4px); }
+
+/* Products jump nav: sticky + current section ------------------------- */
+.crg-motion .crg-jump {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: top .35s var(--crg-ease-out);
+}
+.crg-motion.crg-header-up .crg-jump { top: 68px; }
+.crg-jump a { position: relative; }
+.crg-jump a::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 2px;
+  background: var(--crg-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s var(--crg-ease-out);
+}
+.crg-jump a[aria-current="true"] { color: var(--crg-link); }
+.crg-jump a[aria-current="true"]::after { transform: scaleX(1); }
+
+/* CTA: slow drift on the phone/quote buttons' band -------------------- */
+.crg-motion .crg-cta .crg-h1 { background: linear-gradient(90deg, #fff 0 50%, var(--crg-orange-300) 50% 100%) 0 0 / 200% 100% no-repeat; -webkit-background-clip: text; background-clip: text; color: transparent !important; transition: background-position 1.2s var(--crg-ease-in-out); }
+.crg-motion .crg-cta__inner:hover .crg-h1 { background-position: -100% 0; }
+
+/* Print and "save as PDF": always show everything --------------------- */
+@media print {
+  .crg-motion [data-reveal],
+  .crg-motion [data-split] .crg-word > span,
+  .crg-motion .crg-hero__copy > *,
+  .is-scrubbing .crg-scrub { opacity: 1 !important; translate: none !important; transform: none !important; clip-path: none !important; animation: none !important; }
+  .crg-progress, .crg-hero__controls { display: none !important; }
+}

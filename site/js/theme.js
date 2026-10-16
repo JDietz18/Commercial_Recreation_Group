@@ -38,9 +38,21 @@
     var btn = e.target.closest('[data-theme-toggle]');
     if (!btn) return;
     var next = current() === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try { localStorage.setItem(KEY, next); } catch (err) {}
-    sync();
+    var apply = function () {
+      root.dataset.theme = next;
+      try { localStorage.setItem(KEY, next); } catch (err) {}
+      sync();
+    };
+    // Circular reveal from the button where supported (styles in crg-motion.css).
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || still) return apply();
+    var r = btn.getBoundingClientRect();
+    root.style.setProperty('--vt-x', (r.left + r.width / 2) + 'px');
+    root.style.setProperty('--vt-y', (r.top + r.height / 2) + 'px');
+    root.classList.add('crg-theme-vt');
+    document.startViewTransition(apply).finished.finally(function () {
+      root.classList.remove('crg-theme-vt');
+    });
   });
 
   media.addEventListener('change', sync);

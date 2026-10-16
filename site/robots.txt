@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /script/
+
+Sitemap: https://crgplay.com/sitemap.xml

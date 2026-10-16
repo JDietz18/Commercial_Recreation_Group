@@ -643,3 +643,8 @@ a.crg-btn--light:focus { color: var(--crg-orange-700); }
   .site-header .extra-cell { gap: 6px; }
   .crg-header-cta { padding: 0.5rem 0.875rem; }
 }
+
+/* Links inside running text need more than colour to stand out (WCAG 1.4.1). */
+.crg-section-head__lede a,
+.crg-about p a,
+.crg-contact p a { text-decoration: underline; text-underline-offset: .15em; }

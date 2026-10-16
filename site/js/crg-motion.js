@@ -185,12 +185,21 @@
   try { if (localStorage.getItem('crg-motion-paused') === '1') setPaused(true); } catch (e) {}
 
   if (hero) {
+    // Hidden slides are deferred in the HTML; fetch them once the page has
+    // loaded, before the slideshow first advances.
+    var loadDeferred = function () {
+      hero.querySelectorAll('[data-srcset]').forEach(function (el) { el.srcset = el.getAttribute('data-srcset'); el.removeAttribute('data-srcset'); });
+      hero.querySelectorAll('img[data-src]').forEach(function (el) { el.src = el.getAttribute('data-src'); el.removeAttribute('data-src'); });
+    };
+    if (document.readyState === 'complete') setTimeout(loadDeferred, 1500);
+    else window.addEventListener('load', function () { setTimeout(loadDeferred, 1500); });
     var slides = hero.querySelectorAll('.crg-slide');
     var dots = document.querySelectorAll('[data-slide-to]');
     var index = 0;
     var hovering = false;
 
     var show = function (n) {
+      loadDeferred(); // no-op once loaded; covers a dot clicked before the timer
       index = (n + slides.length) % slides.length;
       slides.forEach(function (s, i) {
         var on = i === index;

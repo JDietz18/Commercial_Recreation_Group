@@ -90,8 +90,10 @@ html.crg-theme-vt::view-transition-new(root) { animation: crg-circle-in .6s var(
 @keyframes crg-rise { to { opacity: 1; translate: none; } }
 
 /* "Who we serve" lights up as you scroll ------------------------------ */
-.is-scrubbing .crg-scrub { opacity: .3; transition: opacity .35s ease; }
-.is-scrubbing .crg-scrub.is-lit { opacity: 1; }
+/* Unlit words are Night (4.93:1 on CRG Orange), lit words white (3.46:1,
+   AA for large text). Both states pass; opacity-dimming did not (1.41:1). */
+.is-scrubbing .crg-scrub { color: var(--crg-charcoal-900); transition: color .35s ease; }
+.is-scrubbing .crg-scrub.is-lit { color: #fff; }
 
 /* Hero slideshow ------------------------------------------------------- */
 .crg-hero__photo { overflow: hidden; }

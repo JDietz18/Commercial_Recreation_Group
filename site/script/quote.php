@@ -21,9 +21,13 @@ const CRG_RECAPTCHA_SECRET = '';
 
 header('Content-Type: application/json; charset=utf-8');
 
-function respond(int $status, string $msg): void
+function respond(int $status, string $msg, bool $fallback = false): void
 {
-    echo json_encode(['status' => $status, 'msg' => $msg]);
+    $out = ['status' => $status, 'msg' => $msg];
+    if ($fallback) {
+        $out['fallback'] = true; // tells the page to offer email/phone instead
+    }
+    echo json_encode($out);
     exit;
 }
 
@@ -96,4 +100,4 @@ $headers = implode("\r\n", [
 if (mail(CRG_QUOTE_TO, $subject, $body, $headers)) {
     respond(1, 'Thanks! We received your request and will be in touch soon.');
 }
-respond(0, 'Sorry, your request could not be sent. Please try again, or call or email us directly.');
+respond(0, 'Sorry, your request could not be sent.', true);

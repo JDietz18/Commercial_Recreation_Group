@@ -83,7 +83,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-header .extra-nav { height: 80px; display: flex; align-items: center; margin-left: 16px; }
 .site-header .is-fixed .extra-nav { height: 68px; }
 .site-header .extra-cell { display: flex; align-items: center; gap: 10px; }
-.crg-header-cta { min-height: 44px; padding: 0.5rem 1.125rem; font-size: 1.0625rem; }
+.crg-header-cta { min-height: 44px; padding: 0.5rem 1.125rem; font-size: 1.1875rem; } /* 19px bold = WCAG large text; white on orange needs it (see crg-base.css) */
 
 .crg-theme-toggle {
   display: inline-flex;
@@ -250,7 +250,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   color: #fff;
   padding: clamp(56px, 8vw, 100px) 0;
 }
-.crg-serve .crg-eyebrow { color: #fff; margin-bottom: 24px; }
+.crg-serve .crg-eyebrow { color: var(--crg-charcoal-900); margin-bottom: 24px; } /* small text: Night passes 4.93:1, white only 3.46:1 */
 .crg-serve__statement { color: #fff !important; max-width: 30ch; margin: 0 0 40px; text-wrap: pretty; }
 .crg-serve__list {
   list-style: none;
@@ -261,7 +261,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 24px;
 }
-.crg-serve__list li { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: var(--crg-text-body-lg); }
+.crg-serve__list li { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.25rem; } /* 20px bold: large text, so white on orange passes */
 .crg-serve__list .crg-icon { width: 32px; height: 32px; }
 @media (min-width: 768px) { .crg-serve__list { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 1200px) { .crg-serve__list { grid-template-columns: repeat(6, 1fr); } }
@@ -596,3 +596,50 @@ a.crg-card:hover { border-color: var(--crg-primary); color: var(--crg-text); tra
 }
 .crg-quote blockquote::before,
 .crg-quote blockquote::after { display: none; content: none; }
+
+/* Quote form fallback (no PHP on the host, or sending failed) */
+.crg-form-status--fallback { color: var(--crg-text); font-weight: 500; flex-basis: 100%; display: grid; gap: 12px; }
+.crg-form-fallback { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Intera's skin recolours every focused link (a:focus); keep button text legible. */
+a.crg-btn--primary,
+a.crg-btn--primary:hover,
+a.crg-btn--primary:focus { color: var(--crg-on-primary); }
+a.crg-btn--outline:focus { color: var(--crg-text); }
+a.crg-btn--outline:hover { color: var(--crg-bg); }
+a.crg-btn--outline-light:focus { color: #fff; }
+a.crg-btn--light:focus { color: var(--crg-orange-700); }
+
+/* Mobile menu button: Intera's icon is an 18x14px hit area that clips at
+   the header edge. Make it a 44x44 target matching the toggles beside it. */
+@media (max-width: 991px) {
+  .site-header .navbar-toggler.navicon {
+    position: relative;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    margin: 0 0 0 10px;
+    padding: 0;
+    border: 1px solid var(--crg-line-strong);
+    background: transparent;
+  }
+  .site-header .navbar-toggler.navicon:hover { border-color: var(--crg-text); }
+  .site-header .navbar-toggler.navicon span { left: 11px; width: 20px; height: 2px; border-radius: 0; }
+  .site-header .navbar-toggler.navicon span:nth-child(1) { top: 14px; bottom: auto; }
+  .site-header .navbar-toggler.navicon span:nth-child(2) { top: 21px; bottom: auto; transform: none; }
+  .site-header .navbar-toggler.navicon span:nth-child(3) { top: 28px; bottom: auto; }
+  .site-header .navbar-toggler.navicon.open span:nth-child(1) { top: 21px; transform: rotate(135deg); }
+  .site-header .navbar-toggler.navicon.open span:nth-child(2) { opacity: 0; left: -60px; }
+  .site-header .navbar-toggler.navicon.open span:nth-child(3) { top: 21px; transform: rotate(-135deg); }
+  .site-header .extra-cell { gap: 8px; }
+}
+
+/* Small laptops / landscape tablets: keep logo, five links, pause, theme and
+   CTA on one row (they wrapped to two rows between 992px and ~1200px). */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .site-header .crg-logo { width: 160px; }
+  .site-header .header-nav .nav > li > a { padding-left: 9px; padding-right: 9px; font-size: 1rem; }
+  .site-header .extra-nav { margin-left: 8px; }
+  .site-header .extra-cell { gap: 6px; }
+  .crg-header-cta { padding: 0.5rem 0.875rem; }
+}

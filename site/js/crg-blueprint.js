@@ -30,6 +30,11 @@
   var mouse = null;
   var lastSpawn = 0;
   var running = false;
+  // Render at most 30fps, and only when something changes (a shape drawing
+  // in or fading out, a new shape, or the mouse moving).
+  var FRAME_MS = 1000 / 30;
+  var lastFrame = 0;
+  var dirty = true;
 
   /* Seeded random so the still drawing is stable between loads. */
   var seed = 7;
@@ -272,18 +277,30 @@
     }
   }
 
+  function changing(now) {
+    return shapes.some(function (s) {
+      var age = now - s.born;
+      return age < s.drawFor || age > s.drawFor + s.hold;
+    });
+  }
+
   function tick(now) {
     if (!running) return;
+    requestAnimationFrame(tick);
+    if (now - lastFrame < FRAME_MS) return;
+    lastFrame = now;
     var paused = root.classList.contains('crg-paused');
     if (!paused) {
       var target = W < 700 ? 4 : 8;
-      if (shapes.length < target && now - lastSpawn > 1100) { spawn(now); lastSpawn = now; }
+      if (shapes.length < target && now - lastSpawn > 1100) { spawn(now); lastSpawn = now; dirty = true; }
     } else {
       // Freeze: keep every shape fully drawn and held while paused.
       shapes.forEach(function (s) { s.born = now - s.drawFor - 1; });
     }
-    render(now);
-    requestAnimationFrame(tick);
+    if (dirty || (!paused && changing(now))) {
+      render(now);
+      dirty = false;
+    }
   }
 
   function drawStill() {
@@ -307,19 +324,20 @@
     requestAnimationFrame(tick);
   }
 
-  window.addEventListener('resize', function () { resize(); if (still.matches) drawStill(); });
+  window.addEventListener('resize', function () { resize(); dirty = true; if (still.matches) drawStill(); });
   still.addEventListener('change', function () { running = false; start(); });
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) { running = false; } else if (!still.matches) { running = true; requestAnimationFrame(tick); }
   });
   // Re-read the ink when the theme changes.
-  new MutationObserver(readInk).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readInk);
+  function themeChanged() { readInk(); dirty = true; if (still.matches) drawStill(); }
+  new MutationObserver(themeChanged).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', themeChanged);
 
   if (finePointer.matches && !still.matches) {
-    window.addEventListener('pointermove', function (e) { mouse = { x: e.clientX, y: e.clientY }; }, { passive: true });
-    document.addEventListener('pointerleave', function () { mouse = null; });
-    window.addEventListener('blur', function () { mouse = null; });
+    window.addEventListener('pointermove', function (e) { mouse = { x: e.clientX, y: e.clientY }; dirty = true; }, { passive: true });
+    document.addEventListener('pointerleave', function () { mouse = null; dirty = true; });
+    window.addEventListener('blur', function () { mouse = null; dirty = true; });
   }
 
   // Grid drifts slightly against the scroll for depth.

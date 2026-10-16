@@ -24,7 +24,12 @@ Opening the HTML files straight from disk also works, but the quote form needs P
 ## Deploy
 
 Upload the contents of `site/` to any host with PHP 7.4+ and a working `mail()`
-(most shared hosting, e.g. cPanel). Without PHP the pages still work; only the form fails.
+(most shared hosting, e.g. cPanel). The quote form then emails info@CRGplay.com directly.
+
+On static hosting without PHP (such as the GitHub Pages preview), or if sending fails,
+the form keeps everything the visitor typed. It offers an **Email this request** button
+(a pre-filled email to info@CRGplay.com) and a **Call (317) 776-7830** button instead, so
+no lead is lost.
 
 ## Content
 
@@ -51,7 +56,23 @@ by CRG where noted:
 3. **Copy check.** The "Who we serve" statement is CRG's own wording, word for word,
    including "that is need of", which probably should be "that is in need of".
 4. **Photos.** Add real installation photos to `images/photos/` and the gallery as projects
-   are documented.
+   are documented (see "Adding photos" below).
+
+## Adding photos
+
+Pages serve each photo as responsive WebP (640/960/1280/1600px wide) with the JPEG as a
+fallback and as the lightbox image. For a new `images/photos/<name>.jpg` (about 1600px wide),
+create the variants with ImageMagick:
+
+```sh
+cd site/images/photos
+for w in 640 960 1280 1600; do
+  convert <name>.jpg -resize ${w}x -strip -quality 72 -define webp:method=6 <name>-$w.webp
+done
+```
+
+Then reference it like the existing photos: a `<picture>` with a WebP `srcset` and a `sizes`
+value that matches its layout slot.
 
 ## How it's put together
 
@@ -123,6 +144,9 @@ Accessibility rules:
 
 ### Changes made to Intera
 
+- Intera's full-screen `#loading-area` overlay is removed. It hid the whole page until every
+  image had downloaded (about 12 seconds on a slow phone connection) and never went away
+  without JavaScript.
 - The bundle injected the template vendor's "Buy Now" and "Support" buttons and the
   AddThis tracking script into every page. Both are removed from `js/combining.js`.
 - `bootstrap-select` now only enhances selects that have the `selectpicker` class, so

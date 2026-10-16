@@ -1,0 +1,125 @@
+/*
+ * CRG Identity System — base elements and small components.
+ * Requires crg-tokens.css. Safe to use on any page of the new site.
+ */
+
+/* Typography -------------------------------------------------------- */
+
+.crg-display,
+.crg-h1,
+.crg-h2,
+.crg-h3 {
+  font-family: var(--crg-font-display);
+  font-weight: var(--crg-display-weight);
+  text-transform: var(--crg-display-case);
+  letter-spacing: var(--crg-display-tracking);
+  text-wrap: balance;
+  margin: 0;
+}
+.crg-display { font-size: var(--crg-text-display); line-height: var(--crg-leading-display); }
+.crg-h1      { font-size: var(--crg-text-h1);      line-height: var(--crg-leading-h1); }
+.crg-h2      { font-size: var(--crg-text-h2);      line-height: var(--crg-leading-h2); }
+.crg-h3      { font-size: var(--crg-text-h3);      line-height: var(--crg-leading-h3); }
+
+.crg-eyebrow {
+  font-family: var(--crg-font-mono);
+  font-size: var(--crg-text-eyebrow);
+  line-height: var(--crg-leading-eyebrow);
+  letter-spacing: var(--crg-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--crg-primary-text);
+  margin: 0;
+}
+
+.crg-body-lg {
+  font-family: var(--crg-font-body);
+  font-size: var(--crg-text-body-lg);
+  line-height: var(--crg-leading-body-lg);
+  text-wrap: pretty;
+}
+
+.crg-mono { font-family: var(--crg-font-mono); }
+
+/* Buttons ------------------------------------------------------------
+ * White on CRG Orange is 3.46:1 — passes WCAG AA for large text only,
+ * so button labels are 19px bold (WCAG "large"). Don't shrink them.
+ */
+
+.crg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0.75rem 1.375rem;
+  border: 2px solid transparent;
+  border-radius: var(--crg-radius);
+  font-family: var(--crg-font-body);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.crg-btn--primary {
+  background: var(--crg-primary);
+  color: var(--crg-on-primary);
+}
+.crg-btn--primary:hover { background: var(--crg-primary-hover); color: var(--crg-on-primary); }
+.crg-btn--outline {
+  background: transparent;
+  border-color: var(--crg-text);
+  color: var(--crg-text);
+}
+.crg-btn--outline:hover { background: var(--crg-text); color: var(--crg-bg); }
+.crg-btn:focus-visible {
+  outline: 3px solid var(--crg-accent-2);
+  outline-offset: 3px;
+}
+
+/* Icons (Lucide) -----------------------------------------------------
+ * <svg class="crg-icon"><use href="#i-school"/></svg>
+ * Strokes follow currentColor; size with --crg-icon-* tokens.
+ */
+
+.crg-icon {
+  width: var(--crg-icon-lg);
+  height: var(--crg-icon-lg);
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--crg-icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.crg-icon--sm { width: var(--crg-icon-sm); height: var(--crg-icon-sm); }
+.crg-icon--md { width: var(--crg-icon-md); height: var(--crg-icon-md); }
+.crg-icon--xl { width: var(--crg-icon-xl); height: var(--crg-icon-xl); }
+
+/* Theme-aware images --------------------------------------------------
+ * For logos (and any image that needs a dark-mode version): put both
+ * files in the markup; the theme decides which one shows.
+ *   <img class="crg-light-only" src="crg-horizontal-color.png" alt="CRG Commercial Recreation Group">
+ *   <img class="crg-dark-only"  src="crg-horizontal-reverse.png" alt="">
+ */
+
+.crg-dark-only { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .crg-light-only { display: none; }
+  :root:not([data-theme="light"]) .crg-dark-only { display: block; }
+}
+:root[data-theme="dark"] .crg-light-only { display: none; }
+:root[data-theme="dark"] .crg-dark-only { display: block; }
+
+/* Photography --------------------------------------------------------- */
+
+.crg-photo-cut { clip-path: var(--crg-photo-cut); }
+
+/* Overlay element between a photo and a white logo or white text. */
+.crg-scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--crg-scrim);
+}

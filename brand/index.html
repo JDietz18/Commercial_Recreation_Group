@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRG Identity System</title>
+<meta name="description" content="CRG Commercial Recreation Group identity system: logo, color, type, icons and light/dark themes for the new website.">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem('crg-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="icon" type="image/png" href="assets/logo/crg-mark-color.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/crg-tokens.css">
+<link rel="stylesheet" href="css/crg-base.css">
+<link rel="stylesheet" href="css/styleguide.css">
+<script src="js/theme.js" defer></script>
+</head>
+<body>
+
+<!-- Lucide v0.460.0 (ISC) — same symbols as icons/sprite.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10" /> <path d="M7 17 17 7" /></symbol>
+  <symbol id="i-baby" viewBox="0 0 24 24"><path d="M9 12h.01" /> <path d="M15 12h.01" /> <path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5" /> <path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1" /></symbol>
+  <symbol id="i-building-2" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /> <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /> <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /> <path d="M10 6h4" /> <path d="M10 10h4" /> <path d="M10 14h4" /> <path d="M10 18h4" /></symbol>
+  <symbol id="i-church" viewBox="0 0 24 24"><path d="M10 9h4" /> <path d="M12 7v5" /> <path d="M14 22v-4a2 2 0 0 0-4 0v4" /> <path d="M18 22V5.618a1 1 0 0 0-.553-.894l-4.553-2.277a2 2 0 0 0-1.788 0L6.553 4.724A1 1 0 0 0 6 5.618V22" /> <path d="m18 7 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.618a1 1 0 0 1 .553-.894L6 7" /></symbol>
+  <symbol id="i-hammer" viewBox="0 0 24 24"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" /> <path d="m18 15 4-4" /> <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" /></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /> <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></symbol>
+  <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></symbol>
+  <symbol id="i-pencil-ruler" viewBox="0 0 24 24"><path d="M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13" /> <path d="m8 6 2-2" /> <path d="m18 16 2-2" /> <path d="m17 11 4.3 4.3c.94.94.94 2.46 0 3.4l-2.6 2.6c-.94.94-2.46.94-3.4 0L11 17" /> <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /> <path d="m15 5 4 4" /></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><path d="M14 22v-4a2 2 0 1 0-4 0v4" /> <path d="m18 10 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.382a1 1 0 0 1 .553-.894L6 10" /> <path d="M18 5v17" /> <path d="m4 6 7.106-3.553a2 2 0 0 1 1.788 0L20 6" /> <path d="M6 5v17" /> <circle cx="12" cy="9" r="2" /></symbol>
+  <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol>
+  <symbol id="i-trees" viewBox="0 0 24 24"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z" /> <path d="M7 16v6" /> <path d="M13 19v3" /> <path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5" /></symbol>
+  <symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M22 12a10.06 10.06 1 0 0-20 0Z" /> <path d="M12 12v8a2 2 0 0 0 4 0" /> <path d="M12 2v1" /></symbol>
+</svg>
+
+<header class="sg-header">
+  <div class="sg-wrap">
+    <a href="#top" aria-label="CRG Identity System, back to top">
+      <img class="crg-light-only" src="assets/logo/crg-horizontal-color.png" alt="CRG Commercial Recreation Group" width="180" height="25">
+      <img class="crg-dark-only" src="assets/logo/crg-horizontal-reverse.png" alt="CRG Commercial Recreation Group" width="180" height="25">
+    </a>
+    <nav class="sg-nav" aria-label="Sections">
+      <a href="#logo">Logo</a>
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#icons">Icons</a>
+      <a href="#themes">Themes</a>
+      <a href="#build">Build</a>
+    </nav>
+    <button type="button" class="sg-toggle" data-theme-toggle aria-label="Switch theme">
+      <svg class="crg-icon crg-icon--md i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      <svg class="crg-icon crg-icon--md i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 01 Cover -->
+<section class="sg-cover" aria-labelledby="cover-title">
+  <div class="sg-cover__text">
+    <img src="assets/logo/crg-horizontal-reverse.png" alt="CRG Commercial Recreation Group">
+    <div class="sg-cover__title">
+      <p class="crg-eyebrow">Website direction · v1.0</p>
+      <h1 id="cover-title" class="crg-display">Identity System</h1>
+    </div>
+    <p class="sg-cover__date crg-body-lg">October 2026</p>
+  </div>
+  <div class="sg-cover__photo">
+    <img src="assets/photos/main.jpg" alt="">
+  </div>
+</section>
+
+<!-- 02 Who we serve -->
+<section class="sg-serve" aria-labelledby="serve-title">
+  <div class="sg-wrap">
+    <p class="crg-eyebrow">02 / Who we serve</p>
+    <h2 id="serve-title" class="crg-h1 sg-serve__statement">Are you part of a school, church, apartment complex, daycare, park, HOA or any other entity that is need of commercial recreational products? We are one of the largest commercial dealers for playground equipment in the state of Indiana.</h2>
+    <ul class="sg-serve__list">
+      <li><svg class="crg-icon crg-icon--xl" aria-hidden="true"><use href="#i-school"/></svg>Schools</li>
+      <li><svg class="crg-icon crg-icon--xl" aria-hidden="true"><use href="#i-church"/></svg>Churches</li>
+      <li><svg class="crg-icon crg-icon--xl" aria-hidden="true"><use href="#i-building-2"/></svg>Apartments</li>
+      <li><svg class="crg-icon crg-icon--xl" aria-hidden="true"><use href="#i-baby"/></svg>Daycares</li>
+      <li><svg class="crg-icon crg-icon--xl" aria-hidden="true"><use href="#i-trees"/></svg>Parks</li>
+      <li><svg class="crg-icon crg-icon--xl" aria-hidden="true"><use href="#i-house"/></svg>HOAs</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 03 Logo -->
+<section class="sg-section" id="logo" aria-labelledby="logo-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">03 / Logo</p>
+        <h2 id="logo-title" class="crg-h1">Three lockups</h2>
+      </div>
+      <p class="sg-lede crg-body-lg">Use the horizontal lockup by default. Switch to stacked when the space is square, and to the mark alone below the minimum size.</p>
+    </div>
+    <div class="sg-lockups">
+      <figure class="sg-card" style="margin:0">
+        <div class="sg-card__art"><img src="assets/logo/crg-horizontal-color.png" alt="Horizontal lockup"></div>
+        <figcaption class="sg-card__meta"><b>Horizontal · primary</b><span>Site header, email, documents</span></figcaption>
+      </figure>
+      <figure class="sg-card" style="margin:0">
+        <div class="sg-card__art"><img src="assets/logo/crg-stacked-color.png" alt="Stacked lockup"></div>
+        <figcaption class="sg-card__meta"><b>Stacked</b><span>Footer, social avatars, signage</span></figcaption>
+      </figure>
+      <figure class="sg-card" style="margin:0">
+        <div class="sg-card__art"><img src="assets/logo/crg-mark-color.png" alt="CRG mark" style="max-height:120px"></div>
+        <figcaption class="sg-card__meta"><b>Mark</b><span>Favicon, small UI</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Clear space -->
+<section class="sg-section" aria-labelledby="clear-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">04 / Clear space</p>
+        <h2 id="clear-title" class="crg-h1">Give it room</h2>
+      </div>
+      <p class="sg-lede crg-body-lg">x = half the height of the CRG letters. Keep text, edges and other graphics outside this zone.</p>
+    </div>
+    <div class="sg-clear">
+      <div class="sg-clear__demo">
+        <div class="sg-clear__frame">
+          <div class="sg-clear__zone">
+            <img src="assets/logo/crg-horizontal-color.png" alt="Horizontal logo with its clear-space zone marked">
+            <span class="sg-clear__x sg-clear__x--t" aria-hidden="true">x</span>
+            <span class="sg-clear__x sg-clear__x--b" aria-hidden="true">x</span>
+            <span class="sg-clear__x sg-clear__x--l" aria-hidden="true">x</span>
+            <span class="sg-clear__x sg-clear__x--r" aria-hidden="true">x</span>
+          </div>
+        </div>
+      </div>
+      <div class="sg-min">
+        <p class="sg-label">Minimum size</p>
+        <div class="sg-min__row">
+          <div class="sg-min__art"><img src="assets/logo/crg-horizontal-color.png" alt="" style="width:180px"></div>
+          <div class="sg-min__meta"><b>Horizontal</b><span class="crg-mono">180px wide · 1.5in</span></div>
+        </div>
+        <div class="sg-min__row">
+          <div class="sg-min__art"><img src="assets/logo/crg-stacked-color.png" alt="" style="width:96px"></div>
+          <div class="sg-min__meta"><b>Stacked</b><span class="crg-mono">96px wide · 0.8in</span></div>
+        </div>
+        <div class="sg-min__row">
+          <div class="sg-min__art"><img src="assets/logo/crg-mark-color.png" alt="" style="height:24px;width:auto"></div>
+          <div class="sg-min__meta"><b>Mark</b><span class="crg-mono">24px tall · 0.25in</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Backgrounds -->
+<section class="sg-section" aria-labelledby="bg-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">05 / Backgrounds</p>
+        <h2 id="bg-title" class="crg-h1">Approved pairings</h2>
+      </div>
+    </div>
+    <div class="sg-grounds">
+      <div class="sg-ground">
+        <div class="sg-ground__art" style="background:var(--crg-white);border:1px solid var(--crg-charcoal-100)"><img src="assets/logo/crg-stacked-color.png" alt="Full-color logo on white"></div>
+        <p><b>Full color</b> on white or Paper</p>
+      </div>
+      <div class="sg-ground">
+        <div class="sg-ground__art" style="background:var(--crg-charcoal-900)"><img src="assets/logo/crg-stacked-reverse.png" alt="Reverse logo on Night"></div>
+        <p><b>Reverse</b> on Night or Charcoal</p>
+      </div>
+      <div class="sg-ground">
+        <div class="sg-ground__art" style="background:var(--crg-orange-500)"><img src="assets/logo/crg-stacked-white.png" alt="All-white logo on CRG Orange"></div>
+        <p><b>All white</b> on CRG Orange</p>
+      </div>
+      <div class="sg-ground">
+        <div class="sg-ground__art">
+          <img class="sg-ground__photo" src="assets/photos/crisp-wet-morning.jpg" alt="">
+          <div class="crg-scrim"></div>
+          <img src="assets/logo/crg-stacked-white.png" alt="All-white logo on a photo with a dark scrim">
+        </div>
+        <p><b>All white</b> on photo, 55% Night scrim</p>
+      </div>
+    </div>
+
+    <p class="sg-label sg-dont-label">Don't</p>
+    <div class="sg-grounds">
+      <div class="sg-ground sg-dont">
+        <div class="sg-ground__art sg-ground__art--short" style="background:var(--crg-white);border:1px solid var(--crg-charcoal-100)"><img src="assets/logo/crg-horizontal-color.png" alt="Incorrect: recolored logo" style="filter:hue-rotate(150deg)"></div>
+        <p>Recolor the mark</p>
+      </div>
+      <div class="sg-ground sg-dont">
+        <div class="sg-ground__art sg-ground__art--short" style="background:var(--crg-white);border:1px solid var(--crg-charcoal-100)"><img src="assets/logo/crg-horizontal-color.png" alt="Incorrect: stretched logo" style="width:60%;transform:scaleX(1.35)"></div>
+        <p>Stretch or squash</p>
+      </div>
+      <div class="sg-ground sg-dont">
+        <div class="sg-ground__art sg-ground__art--short" style="background:var(--crg-orange-500)"><img src="assets/logo/crg-horizontal-color.png" alt="Incorrect: full-color logo on orange"></div>
+        <p>Full color on orange</p>
+      </div>
+      <div class="sg-ground sg-dont">
+        <div class="sg-ground__art sg-ground__art--short">
+          <img class="sg-ground__photo" src="assets/photos/color-book-cover.jpg" alt="">
+          <img src="assets/logo/crg-horizontal-color.png" alt="Incorrect: full-color logo on a busy photo">
+        </div>
+        <p>Full color on busy photos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Color -->
+<section class="sg-section" id="color" aria-labelledby="color-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">06 / Color</p>
+        <h2 id="color-title" class="crg-h1">Core palette</h2>
+      </div>
+      <p class="sg-lede crg-body-lg">Orange and Charcoal come from the logo. Turf Green and Rope Blue are sampled from the equipment in CRG's renders.</p>
+    </div>
+    <div class="sg-palette">
+      <div class="sg-swatch sg-swatch--tall" style="background:var(--crg-orange-500);color:var(--crg-white)">
+        <div class="sg-swatch__name">CRG Orange</div>
+        <div class="sg-swatch__codes"><span>#F25422</span><span>RGB 242 84 34</span><span>OKLCH 0.655 0.203 37</span><span class="sg-swatch__use">Primary. CTAs, highlights, the mark.</span></div>
+      </div>
+      <div class="sg-swatch sg-swatch--tall" style="background:var(--crg-charcoal-700);color:var(--crg-white)">
+        <div class="sg-swatch__name">Charcoal</div>
+        <div class="sg-swatch__codes"><span>#393536</span><span>RGB 57 53 54</span><span class="sg-swatch__use">Text and wordmark.</span></div>
+      </div>
+      <div class="sg-swatch" style="background:var(--crg-green-500);color:var(--crg-charcoal-900)">
+        <div class="sg-swatch__name">Turf Green</div>
+        <div class="sg-swatch__codes"><span>#68BE32</span><span>104 190 50</span></div>
+      </div>
+      <div class="sg-swatch" style="background:var(--crg-blue-500);color:var(--crg-white)">
+        <div class="sg-swatch__name">Rope Blue</div>
+        <div class="sg-swatch__codes"><span>#1E59CD</span><span>30 89 205</span></div>
+      </div>
+      <div class="sg-swatch" style="background:var(--crg-charcoal-50);color:var(--crg-charcoal-700);border:1px solid var(--crg-charcoal-200)">
+        <div class="sg-swatch__name">Paper</div>
+        <div class="sg-swatch__codes"><span>#FAF8F7</span><span>Light background</span></div>
+      </div>
+      <div class="sg-swatch" style="background:var(--crg-charcoal-900);color:var(--crg-charcoal-50);border:1px solid var(--crg-charcoal-600)">
+        <div class="sg-swatch__name">Night</div>
+        <div class="sg-swatch__codes"><span>#1F1B1C</span><span>Dark background</span></div>
+      </div>
+    </div>
+    <div class="sg-ratio">
+      <p class="sg-label" style="margin:0">Proportion</p>
+      <div class="sg-ratio__bar" role="img" aria-label="Color proportion: neutrals 50%, charcoal 22%, orange 16%, accents 12%">
+        <div style="flex:50;background:var(--crg-charcoal-100);border:1px solid var(--crg-line-strong)"></div>
+        <div style="flex:22;background:var(--crg-charcoal-700)"></div>
+        <div style="flex:16;background:var(--crg-orange-500)"></div>
+        <div style="flex:6;background:var(--crg-green-500)"></div>
+        <div style="flex:6;background:var(--crg-blue-500)"></div>
+      </div>
+      <div class="sg-ratio__key">
+        <span><i style="background:var(--crg-charcoal-100);border:1px solid var(--crg-charcoal-300)"></i>Neutrals 50%</span>
+        <span><i style="background:var(--crg-charcoal-700)"></i>Charcoal 22%</span>
+        <span><i style="background:var(--crg-orange-500)"></i>Orange 16%</span>
+        <span><i style="background:linear-gradient(90deg,var(--crg-green-500) 50%,var(--crg-blue-500) 50%)"></i>Accents 12%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 Tints -->
+<section class="sg-section" aria-labelledby="tints-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">07 / Tints</p>
+        <h2 id="tints-title" class="crg-h1">Ramps</h2>
+      </div>
+      <p class="sg-lede crg-body-lg">Built in OKLCH so steps look evenly spaced. 500 is the core color. Use 700 for orange or green text on light backgrounds.</p>
+    </div>
+    <div class="sg-ramps">
+      <div class="sg-ramp">
+        <div class="sg-ramp__name">Orange</div>
+        <div class="sg-ramp__steps">
+          <div class="sg-step" style="background:#FFDABF"><span>100</span><span>#FFDABF</span></div>
+          <div class="sg-step" style="background:#FF8A65"><span>300</span><span>#FF8A65</span></div>
+          <div class="sg-step sg-step--on-dark sg-step--core" style="background:#F25422"><span>500</span><span>#F25422</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#A82F00"><span>700</span><span>#A82F00</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#4A1406"><span>900</span><span>#4A1406</span></div>
+        </div>
+      </div>
+      <div class="sg-ramp">
+        <div class="sg-ramp__name">Turf Green</div>
+        <div class="sg-ramp__steps">
+          <div class="sg-step" style="background:#D5F7BE"><span>100</span><span>#D5F7BE</span></div>
+          <div class="sg-step" style="background:#A9E58C"><span>300</span><span>#A9E58C</span></div>
+          <div class="sg-step sg-step--core" style="background:#68BE32"><span>500</span><span>#68BE32</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#357C00"><span>700</span><span>#357C00</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#164A00"><span>900</span><span>#164A00</span></div>
+        </div>
+      </div>
+      <div class="sg-ramp">
+        <div class="sg-ramp__name">Rope Blue</div>
+        <div class="sg-ramp__steps">
+          <div class="sg-step" style="background:#D3E3FF"><span>100</span><span>#D3E3FF</span></div>
+          <div class="sg-step" style="background:#7DB2FF"><span>300</span><span>#7DB2FF</span></div>
+          <div class="sg-step sg-step--on-dark sg-step--core" style="background:#1E59CD"><span>500</span><span>#1E59CD</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#183F95"><span>700</span><span>#183F95</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#0B2560"><span>900</span><span>#0B2560</span></div>
+        </div>
+      </div>
+      <div class="sg-ramp">
+        <div class="sg-ramp__name">Charcoal</div>
+        <div class="sg-ramp__steps">
+          <div class="sg-step" style="background:#EDE8E6"><span>100</span><span>#EDE8E6</span></div>
+          <div class="sg-step" style="background:#B9B2B3"><span>300</span><span>#B9B2B3</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#6D6768"><span>500</span><span>#6D6768</span></div>
+          <div class="sg-step sg-step--on-dark sg-step--core-alt" style="background:#393536"><span>700</span><span>#393536</span></div>
+          <div class="sg-step sg-step--on-dark" style="background:#1F1B1C"><span>900</span><span>#1F1B1C</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08–09 Typography -->
+<section class="sg-section" id="type" aria-labelledby="type-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">08 / Typography</p>
+        <h2 id="type-title" class="crg-h1">Signage pairing</h2>
+      </div>
+      <p class="sg-lede crg-body-lg">Barlow Condensed for headings, Barlow for text, IBM Plex Mono for eyebrows and data. All free on Google Fonts. Closest match to the DIN-style letters in the logo.</p>
+    </div>
+    <div class="sg-type">
+      <div class="sg-type__specimen">
+        <p class="crg-display">Play starts here</p>
+        <p class="crg-h1">Inclusive playgrounds</p>
+        <p class="crg-h2">Shade and site amenities</p>
+        <p class="crg-eyebrow">Eyebrow · Indiana dealer</p>
+        <p class="crg-body-lg" style="margin:0;max-width:48ch">We are one of the largest commercial dealers for playground equipment in the state of Indiana.</p>
+      </div>
+      <div>
+        <p class="sg-label">09 / Type scale</p>
+        <div class="sg-table-scroll">
+          <table class="sg-table">
+            <thead><tr><th>Token</th><th>Desktop</th><th>Mobile</th><th>LH</th></tr></thead>
+            <tbody>
+              <tr><td>display</td><td>96</td><td>56</td><td>0.9</td></tr>
+              <tr><td>h1</td><td>64</td><td>40</td><td>0.95</td></tr>
+              <tr><td>h2</td><td>44</td><td>32</td><td>1.0</td></tr>
+              <tr><td>h3</td><td>28</td><td>24</td><td>1.1</td></tr>
+              <tr><td>eyebrow</td><td>14</td><td>13</td><td>1.2</td></tr>
+              <tr><td>body-lg</td><td>20</td><td>18</td><td>1.5</td></tr>
+              <tr><td>body</td><td>17</td><td>16</td><td>1.55</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sg-note" style="margin-top:16px">Sizes in px. Each token scales fluidly from its mobile size at 375px to its desktop size at 1280px (<code>--crg-text-*</code>).</p>
+      </div>
+    </div>
+    <div class="sg-faces">
+      <div class="sg-face">
+        <p class="sg-label" style="margin:0">Display</p>
+        <p class="sg-face__sample" style="font-family:var(--crg-font-display);font-weight:700;text-transform:uppercase">Built for play</p>
+        <p class="sg-note">Barlow Condensed 600–800, uppercase</p>
+      </div>
+      <div class="sg-face">
+        <p class="sg-label" style="margin:0">Body</p>
+        <p class="sg-face__sample" style="font-family:var(--crg-font-body);font-weight:500;font-size:2rem">Built for play</p>
+        <p class="sg-note">Barlow 400–700</p>
+      </div>
+      <div class="sg-face">
+        <p class="sg-label" style="margin:0">Mono</p>
+        <p class="sg-face__sample" style="font-family:var(--crg-font-mono);font-size:1.5rem">#F25422</p>
+        <p class="sg-note">IBM Plex Mono 400–500</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Iconography -->
+<section class="sg-section" id="icons" aria-labelledby="icons-title">
+  <div class="sg-wrap">
+    <div class="sg-icons-layout">
+      <div style="display:grid;gap:32px;align-content:start">
+        <div style="display:grid;gap:14px">
+          <p class="crg-eyebrow">10 / Iconography</p>
+          <h2 id="icons-title" class="crg-h1">Lucide icons</h2>
+        </div>
+        <p class="sg-lede crg-body-lg">Open source (ISC), 1,500+ icons, and the clean strokes sit well next to the logotype. It replaces the template's four icon fonts.</p>
+        <div class="sg-specs">
+          <div><span>Grid</span><span>24px</span></div>
+          <div><span>Stroke</span><span>2px, round caps</span></div>
+          <div><span>Sizes</span><span>16 · 20 · 24 · 32</span></div>
+          <div><span>Color</span><span>Charcoal, Orange 700, or white on fills</span></div>
+        </div>
+      </div>
+      <div class="sg-icon-grid">
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-school"/></svg><span>school</span></div>
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-church"/></svg><span>church</span></div>
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-building-2"/></svg><span>building-2</span></div>
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-baby"/></svg><span>baby</span></div>
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-trees"/></svg><span>trees</span></div>
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-house"/></svg><span>house</span></div>
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-shield-check"/></svg><span>shield-check</span></div>
+        <div class="sg-icon-tile"><svg class="crg-icon" aria-hidden="true"><use href="#i-umbrella"/></svg><span>umbrella</span></div>
+        <div class="sg-icon-tile sg-icon-tile--orange"><svg class="crg-icon" aria-hidden="true"><use href="#i-pencil-ruler"/></svg><span>pencil-ruler</span></div>
+        <div class="sg-icon-tile sg-icon-tile--charcoal"><svg class="crg-icon" aria-hidden="true"><use href="#i-hammer"/></svg><span>hammer</span></div>
+        <div class="sg-icon-tile sg-icon-tile--accent"><svg class="crg-icon" aria-hidden="true"><use href="#i-map-pin"/></svg><span>map-pin</span></div>
+        <div class="sg-icon-tile sg-icon-tile--accent"><svg class="crg-icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg><span>arrow-up-right</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11–12 Light + dark -->
+<section class="sg-section sg-section--deep" id="themes" aria-labelledby="themes-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">11–12 / Light + dark</p>
+        <h2 id="themes-title" class="crg-h1">Full site themes</h2>
+      </div>
+      <p class="sg-lede crg-body-lg">The site follows each visitor's device setting, and the toggle in the header overrides it. This preview is built only from theme tokens, so it switches with the toggle.</p>
+    </div>
+
+    <div class="sg-site">
+      <div class="sg-site__bar">
+        <img class="crg-light-only" src="assets/logo/crg-horizontal-color.png" alt="CRG Commercial Recreation Group">
+        <img class="crg-dark-only" src="assets/logo/crg-horizontal-reverse.png" alt="CRG Commercial Recreation Group">
+        <nav class="sg-site__nav" aria-label="Example site navigation">
+          <a href="#themes" aria-current="page">Products</a>
+          <a href="#themes">Projects</a>
+          <a href="#themes">About</a>
+          <a href="#themes">Contact</a>
+          <a class="crg-btn crg-btn--primary" href="#themes">Request a quote</a>
+        </nav>
+      </div>
+      <div class="sg-site__hero">
+        <div class="sg-site__copy">
+          <p class="crg-eyebrow">Indiana playground dealer</p>
+          <p class="crg-h1">Play spaces for every community</p>
+          <p class="crg-body-lg">We are one of the largest commercial dealers for playground equipment in the state of Indiana.</p>
+          <div class="sg-site__ctas">
+            <a class="crg-btn crg-btn--primary" href="#themes">Start a project</a>
+            <a class="crg-btn crg-btn--outline" href="#themes">View projects</a>
+          </div>
+        </div>
+        <div class="sg-site__photo">
+          <img class="crg-light-only" src="assets/photos/asla-sunset.jpg" alt="">
+          <img class="crg-dark-only" src="assets/photos/getting-close-sketch.jpg" alt="">
+        </div>
+      </div>
+      <ul class="sg-site__strip">
+        <li><svg class="crg-icon" aria-hidden="true"><use href="#i-school"/></svg>Schools</li>
+        <li><svg class="crg-icon" aria-hidden="true"><use href="#i-church"/></svg>Churches</li>
+        <li><svg class="crg-icon" aria-hidden="true"><use href="#i-building-2"/></svg>Apartments</li>
+        <li><svg class="crg-icon" aria-hidden="true"><use href="#i-baby"/></svg>Daycares</li>
+        <li><svg class="crg-icon" aria-hidden="true"><use href="#i-trees"/></svg>Parks</li>
+        <li><svg class="crg-icon" aria-hidden="true"><use href="#i-house"/></svg>HOAs</li>
+      </ul>
+    </div>
+
+    <div class="sg-themes">
+      <table class="sg-tokens">
+        <caption>Light</caption>
+        <tbody>
+          <tr><td><i class="sg-chip" style="background:#FAF8F7"></i>bg</td><td>#FAF8F7</td></tr>
+          <tr><td><i class="sg-chip" style="background:#FFFFFF"></i>surface</td><td>#FFFFFF</td></tr>
+          <tr><td><i class="sg-chip" style="background:#EDE8E6"></i>line</td><td>#EDE8E6</td></tr>
+          <tr><td><i class="sg-chip" style="background:#393536"></i>text</td><td>#393536</td></tr>
+          <tr><td><i class="sg-chip" style="background:#6D6768"></i>text-muted</td><td>#6D6768</td></tr>
+          <tr><td><i class="sg-chip" style="background:#F25422"></i>primary</td><td>#F25422</td></tr>
+          <tr><td><i class="sg-chip" style="background:#D2410C"></i>primary-hover</td><td>#D2410C</td></tr>
+          <tr><td><i class="sg-chip" style="background:#A82F00"></i>primary-text</td><td>#A82F00</td></tr>
+          <tr><td><i class="sg-chip" style="background:#68BE32"></i>accent-1</td><td>#68BE32</td></tr>
+          <tr><td><i class="sg-chip" style="background:#1E59CD"></i>accent-2</td><td>#1E59CD</td></tr>
+        </tbody>
+      </table>
+      <table class="sg-tokens">
+        <caption>Dark</caption>
+        <tbody>
+          <tr><td><i class="sg-chip" style="background:#1F1B1C"></i>bg</td><td>#1F1B1C</td></tr>
+          <tr><td><i class="sg-chip" style="background:#2A2526"></i>surface</td><td>#2A2526</td></tr>
+          <tr><td><i class="sg-chip" style="background:#413B3C"></i>line</td><td>#413B3C</td></tr>
+          <tr><td><i class="sg-chip" style="background:#FAF8F7"></i>text</td><td>#FAF8F7</td></tr>
+          <tr><td><i class="sg-chip" style="background:#B9B2B3"></i>text-muted</td><td>#B9B2B3</td></tr>
+          <tr><td><i class="sg-chip" style="background:#F25422"></i>primary</td><td>#F25422</td></tr>
+          <tr><td><i class="sg-chip" style="background:#D2410C"></i>primary-hover</td><td>#D2410C</td></tr>
+          <tr><td><i class="sg-chip" style="background:#FF8A65"></i>primary-text</td><td>#FF8A65</td></tr>
+          <tr><td><i class="sg-chip" style="background:#85CA62"></i>accent-1</td><td>#85CA62</td></tr>
+          <tr><td><i class="sg-chip" style="background:#7DB2FF"></i>accent-2</td><td>#7DB2FF</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 13 Build -->
+<section class="sg-section" id="build" aria-labelledby="build-title">
+  <div class="sg-wrap">
+    <div class="sg-head">
+      <div>
+        <p class="crg-eyebrow">13 / Build</p>
+        <h2 id="build-title" class="crg-h1">Applying to Intera</h2>
+      </div>
+      <p class="sg-lede crg-body-lg">skin-1.css declares these variables, but most of its rules use hard-coded hex values. Replace the hex values as well, not only the variables.</p>
+    </div>
+    <div class="sg-build">
+      <div style="display:grid;gap:40px;align-content:start">
+        <div class="sg-table-scroll">
+          <table class="sg-table">
+            <thead><tr><th>skin-1.css</th><th>Intera</th><th>CRG</th></tr></thead>
+            <tbody>
+              <tr><td>--bg-color</td><td style="color:var(--crg-text-muted)">#ffa200</td><td><i class="sg-dot" style="background:#F25422"></i>#F25422</td></tr>
+              <tr><td>--bg-color-sc</td><td style="color:var(--crg-text-muted)">#ff6c00</td><td><i class="sg-dot" style="background:#D2410C"></i>#D2410C</td></tr>
+              <tr><td>--bg-color-ho</td><td style="color:var(--crg-text-muted)">#91ae1d</td><td><i class="sg-dot" style="background:#68BE32"></i>#68BE32</td></tr>
+              <tr><td>--text-color</td><td style="color:var(--crg-text-muted)">#ffa200</td><td><i class="sg-dot" style="background:#A82F00"></i>#A82F00</td></tr>
+              <tr><td>--text-color-sc</td><td style="color:var(--crg-text-muted)">#b056ff</td><td><i class="sg-dot" style="background:#1E59CD"></i>#1E59CD</td></tr>
+              <tr><td>borders</td><td style="color:var(--crg-text-muted)">#a8ca1e</td><td><i class="sg-dot" style="background:#F25422"></i>#F25422</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sg-specs">
+          <div><span>Headings</span><span>Montserrat, Poppins → Barlow Condensed</span></div>
+          <div><span>Body</span><span>Open Sans, Roboto → Barlow</span></div>
+          <div><span>Icons</span><span>4 icon fonts → Lucide</span></div>
+        </div>
+      </div>
+      <div style="display:grid;gap:40px;align-content:start">
+        <ul class="sg-files">
+          <li><code>css/crg-tokens.css</code><span>Every color, ramp, type size and theme value as CSS variables. Load first.</span></li>
+          <li><code>css/crg-base.css</code><span>Type classes, buttons, icons, theme-aware logo swap.</span></li>
+          <li><code>css/skin-crg.css</code><span>Replaces Intera's skin-1.css. Maps its variables and fonts to CRG.</span></li>
+          <li><code>js/theme.js</code><span>Light/dark toggle that follows the device until a visitor chooses.</span></li>
+          <li><code>icons/sprite.svg</code><span>The Lucide icons used here, as one sprite.</span></li>
+        </ul>
+<pre class="sg-code"><code>/* css/skin/skin-crg.css */
+:root {
+  --bg-color:      var(--crg-primary);       /* #F25422 */
+  --bg-color-sc:   var(--crg-primary-hover); /* #D2410C */
+  --bg-color-ho:   var(--crg-accent-1);      /* #68BE32 */
+  --text-color:    var(--crg-primary-text);  /* #A82F00 */
+  --text-color-sc: var(--crg-accent-2-text); /* #1E59CD */
+}
+h1,h2,h3,h4 { font-family: var(--crg-display); }
+body        { font-family: var(--crg-body); }</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="sg-footer">
+  <div class="sg-wrap">
+    <img src="assets/logo/crg-stacked-reverse.png" alt="CRG Commercial Recreation Group">
+    <p>CRG identity system · Website direction v1.0 · October 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

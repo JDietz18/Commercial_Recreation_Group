@@ -1,0 +1,178 @@
+/*
+ * CRG Identity System — design tokens (v1.0, October 2026)
+ *
+ * Source of truth for color, type, icon and theme values on the new
+ * CRG website. Everything here is a CSS custom property; nothing is
+ * styled. Load it before any component or template CSS.
+ *
+ *   Typography pairing: A · Signage (Barlow Condensed + Barlow)
+ *   Themes: light by default, dark via the OS setting or data-theme="dark"
+ *
+ * Fonts (Google Fonts):
+ *   <link rel="preconnect" href="https://fonts.googleapis.com">
+ *   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ *   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+ */
+
+:root {
+  /* ------------------------------------------------------------------
+   * Ramps — built in OKLCH so steps read as evenly spaced.
+   * 500 is the core color, except Charcoal where 700 is the logo color.
+   * ------------------------------------------------------------------ */
+  --crg-orange-100: #FFDABF;
+  --crg-orange-300: #FF8A65;
+  --crg-orange-500: #F25422; /* CRG Orange — oklch(0.655 0.203 37) */
+  --crg-orange-600: #D2410C; /* hover / pressed */
+  --crg-orange-700: #A82F00; /* orange text on light backgrounds */
+  --crg-orange-900: #4A1406;
+
+  --crg-green-100: #D5F7BE;
+  --crg-green-300: #A9E58C;
+  --crg-green-400: #85CA62; /* green on dark backgrounds */
+  --crg-green-500: #68BE32; /* Turf Green */
+  --crg-green-700: #357C00; /* green text on light backgrounds */
+  --crg-green-900: #164A00;
+
+  --crg-blue-100: #D3E3FF;
+  --crg-blue-300: #7DB2FF;
+  --crg-blue-500: #1E59CD; /* Rope Blue */
+  --crg-blue-700: #183F95;
+  --crg-blue-900: #0B2560;
+
+  --crg-charcoal-50:  #FAF8F7; /* Paper */
+  --crg-charcoal-100: #EDE8E6;
+  --crg-charcoal-200: #D6CFD0;
+  --crg-charcoal-300: #B9B2B3;
+  --crg-charcoal-500: #6D6768;
+  --crg-charcoal-600: #413B3C;
+  --crg-charcoal-700: #393536; /* Charcoal — the wordmark */
+  --crg-charcoal-800: #2A2526;
+  --crg-charcoal-900: #1F1B1C; /* Night */
+  --crg-charcoal-950: #141112;
+
+  --crg-white: #FFFFFF;
+
+  /* ------------------------------------------------------------------
+   * Typography — Pairing A · Signage
+   * ------------------------------------------------------------------ */
+  --crg-font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --crg-font-body:    'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --crg-font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --crg-display-weight: 700;
+  --crg-display-case: uppercase;
+  --crg-display-tracking: 0em;
+
+  /* Fluid sizes: mobile value at 375px → desktop value at 1280px+ */
+  --crg-text-display: clamp(3.5rem, 2.464rem + 4.42vw, 6rem);       /* 56 → 96 */
+  --crg-text-h1:      clamp(2.5rem, 1.878rem + 2.652vw, 4rem);      /* 40 → 64 */
+  --crg-text-h2:      clamp(2rem, 1.689rem + 1.326vw, 2.75rem);     /* 32 → 44 */
+  --crg-text-h3:      clamp(1.5rem, 1.396rem + 0.442vw, 1.75rem);   /* 24 → 28 */
+  --crg-text-eyebrow: clamp(0.8125rem, 0.7866rem + 0.1105vw, 0.875rem); /* 13 → 14 */
+  --crg-text-body-lg: clamp(1.125rem, 1.073rem + 0.221vw, 1.25rem); /* 18 → 20 */
+  --crg-text-body:    clamp(1rem, 0.9741rem + 0.1105vw, 1.0625rem); /* 16 → 17 */
+
+  --crg-leading-display: 0.9;
+  --crg-leading-h1: 0.95;
+  --crg-leading-h2: 1;
+  --crg-leading-h3: 1.1;
+  --crg-leading-eyebrow: 1.2;
+  --crg-leading-body-lg: 1.5;
+  --crg-leading-body: 1.55;
+
+  --crg-tracking-eyebrow: 0.1em;
+
+  /* ------------------------------------------------------------------
+   * Icons — Lucide (ISC). 24px grid, 2px stroke, round caps.
+   * ------------------------------------------------------------------ */
+  --crg-icon-sm: 16px;
+  --crg-icon-md: 20px;
+  --crg-icon-lg: 24px;
+  --crg-icon-xl: 32px;
+  --crg-icon-stroke: 2;
+
+  /* ------------------------------------------------------------------
+   * Shape — the identity is square-cornered and angular.
+   * Photos use a diagonal cut on their leading edge.
+   * ------------------------------------------------------------------ */
+  --crg-radius: 0;
+  --crg-photo-cut: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+  --crg-scrim: rgba(31, 27, 28, 0.55); /* white logo on photography */
+
+  /* ------------------------------------------------------------------
+   * Semantic theme — LIGHT (default)
+   * ------------------------------------------------------------------ */
+  color-scheme: light;
+  --crg-bg:            var(--crg-charcoal-50);
+  --crg-bg-deep:       var(--crg-charcoal-100); /* recessed sections */
+  --crg-surface:       var(--crg-white);
+  --crg-line:          var(--crg-charcoal-100);
+  --crg-line-strong:   var(--crg-charcoal-200);
+  --crg-text:          var(--crg-charcoal-700);
+  --crg-text-muted:    var(--crg-charcoal-500);
+  --crg-primary:       var(--crg-orange-500);
+  --crg-primary-hover: var(--crg-orange-600);
+  --crg-primary-text:  var(--crg-orange-700);
+  --crg-on-primary:    var(--crg-white);
+  --crg-link:          var(--crg-orange-600);
+  --crg-link-hover:    var(--crg-orange-700);
+  --crg-accent-1:      var(--crg-green-500);
+  --crg-accent-1-text: var(--crg-green-700);
+  --crg-accent-2:      var(--crg-blue-500);
+  --crg-accent-2-text: var(--crg-blue-500);
+  --crg-icon:          var(--crg-orange-700);
+  --crg-shadow:        0 30px 60px -30px rgba(31, 27, 28, 0.35);
+}
+
+/* ---------------------------------------------------------------------
+ * Semantic theme — DARK
+ * Applied when the OS prefers dark (unless the visitor chose light), or
+ * whenever <html data-theme="dark"> is set.
+ * --------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --crg-bg:            var(--crg-charcoal-900);
+    --crg-bg-deep:       var(--crg-charcoal-950);
+    --crg-surface:       var(--crg-charcoal-800);
+    --crg-line:          var(--crg-charcoal-600);
+    --crg-line-strong:   var(--crg-charcoal-600);
+    --crg-text:          var(--crg-charcoal-50);
+    --crg-text-muted:    var(--crg-charcoal-300);
+    --crg-primary:       var(--crg-orange-500);
+    --crg-primary-hover: var(--crg-orange-600);
+    --crg-primary-text:  var(--crg-orange-300);
+    --crg-on-primary:    var(--crg-white);
+    --crg-link:          var(--crg-orange-300);
+    --crg-link-hover:    var(--crg-orange-100);
+    --crg-accent-1:      var(--crg-green-400);
+    --crg-accent-1-text: var(--crg-green-400);
+    --crg-accent-2:      var(--crg-blue-300);
+    --crg-accent-2-text: var(--crg-blue-300);
+    --crg-icon:          var(--crg-orange-300);
+    --crg-shadow:        none;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --crg-bg:            var(--crg-charcoal-900);
+  --crg-bg-deep:       var(--crg-charcoal-950);
+  --crg-surface:       var(--crg-charcoal-800);
+  --crg-line:          var(--crg-charcoal-600);
+  --crg-line-strong:   var(--crg-charcoal-600);
+  --crg-text:          var(--crg-charcoal-50);
+  --crg-text-muted:    var(--crg-charcoal-300);
+  --crg-primary:       var(--crg-orange-500);
+  --crg-primary-hover: var(--crg-orange-600);
+  --crg-primary-text:  var(--crg-orange-300);
+  --crg-on-primary:    var(--crg-white);
+  --crg-link:          var(--crg-orange-300);
+  --crg-link-hover:    var(--crg-orange-100);
+  --crg-accent-1:      var(--crg-green-400);
+  --crg-accent-1-text: var(--crg-green-400);
+  --crg-accent-2:      var(--crg-blue-300);
+  --crg-accent-2-text: var(--crg-blue-300);
+  --crg-icon:          var(--crg-orange-300);
+  --crg-shadow:        none;
+}

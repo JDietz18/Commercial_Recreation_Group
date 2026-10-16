@@ -1,0 +1,53 @@
+/*
+ * css/skin/skin-crg.css — CRG skin for the Intera template.
+ *
+ * Load order in Intera's <head>, replacing skin-1.css:
+ *   <link rel="stylesheet" href="css/crg-tokens.css">
+ *   <link rel="stylesheet" href="css/crg-base.css">
+ *   <link rel="stylesheet" href="css/skin/skin-crg.css">
+ *
+ * Intera's skin-1.css declares these variables, but most of its rules use
+ * hard-coded hex values. Pointing the variables at CRG tokens is not
+ * enough on its own; also run the hex find-and-replace in brand/README.md.
+ *
+ * Because the variables point at semantic tokens, the Intera skin follows
+ * light and dark mode automatically.
+ */
+
+:root {
+  --bg-color:      var(--crg-primary);       /* was #ffa200 → #F25422 */
+  --bg-color-sc:   var(--crg-primary-hover); /* was #ff6c00 → #D2410C */
+  --bg-color-ho:   var(--crg-accent-1);      /* was #91ae1d → #68BE32 */
+  --text-color:    var(--crg-primary-text);  /* was #ffa200 → #A82F00 */
+  --text-color-sc: var(--crg-accent-2-text); /* was #b056ff → #1E59CD */
+  /* Borders have no variable in skin-1.css: #a8ca1e → #F25422 by find-and-replace. */
+
+  --crg-display: var(--crg-font-display);
+  --crg-body:    var(--crg-font-body);
+}
+
+/* Fonts: Montserrat / Poppins → display face; Open Sans / Roboto → body face */
+body {
+  font-family: var(--crg-body);
+  font-size: var(--crg-text-body);
+  line-height: var(--crg-leading-body);
+  background-color: var(--crg-bg);
+  color: var(--crg-text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--crg-display);
+  font-weight: var(--crg-display-weight);
+  text-transform: var(--crg-display-case);
+  letter-spacing: var(--crg-display-tracking);
+  color: var(--crg-text);
+}
+h1, .h1 { font-size: var(--crg-text-h1); line-height: var(--crg-leading-h1); }
+h2, .h2 { font-size: var(--crg-text-h2); line-height: var(--crg-leading-h2); }
+h3, .h3 { font-size: var(--crg-text-h3); line-height: var(--crg-leading-h3); }
+
+a { color: var(--crg-link); }
+a:hover, a:focus { color: var(--crg-link-hover); }
+
+::selection { background: var(--crg-primary); color: var(--crg-on-primary); }

@@ -9,11 +9,11 @@
  */
 
 /* Where quote requests are delivered. */
-const CRG_QUOTE_TO = 'quotes@example.com'; // TODO: CRG's real inbox
+const CRG_QUOTE_TO = 'info@CRGplay.com';
 
 /* Sender address. Must be on a domain your mail server may send for,
    or messages will land in spam. Replies go to the visitor via Reply-To. */
-const CRG_QUOTE_FROM = 'website@example.com'; // TODO: e.g. website@<crg-domain>
+const CRG_QUOTE_FROM = 'website@crgplay.com'; // TODO: confirm this address exists on crgplay.com's mail server
 
 /* Optional Google reCAPTCHA v2 secret. Leave empty to rely on the honeypot
    field only. If set, also set data-sitekey in contact.html. */

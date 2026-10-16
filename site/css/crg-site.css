@@ -8,13 +8,12 @@
 /* Base ---------------------------------------------------------------- */
 
 html { scroll-padding-top: 96px; }
+/* Page backgrounds are transparent so the blueprint layer shows
+   (see crg-blueprint.css); the colour lives on <html>. */
 body,
 .page-wraper,
 .page-content,
-.bg-white {
-  background-color: var(--crg-bg) !important;
-  color: var(--crg-text);
-}
+.bg-white { color: var(--crg-text); }
 body {
   font-family: var(--crg-font-body);
   font-size: var(--crg-text-body);
@@ -178,8 +177,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* Sections ------------------------------------------------------------ */
 
-.crg-section { background: var(--crg-bg); }
-.crg-section--deep { background: var(--crg-bg-deep) !important; }
 .section-full.content-inner { padding-top: clamp(56px, 8vw, 100px); padding-bottom: clamp(56px, 8vw, 100px); }
 
 .crg-section-head {
@@ -196,10 +193,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* Home hero ------------------------------------------------------------ */
 
-.crg-hero {
-  display: grid;
-  background: var(--crg-bg);
-}
+.crg-hero { display: grid; }
 .crg-hero__copy {
   display: flex;
   flex-direction: column;
@@ -529,3 +523,76 @@ a.crg-card:hover { border-color: var(--crg-primary); color: var(--crg-text); tra
 }
 .crg-scroltop:hover { background: var(--crg-primary-hover); }
 .crg-scroltop .crg-icon { margin: auto; }
+
+/* Testimonials ------------------------------------------------------- */
+
+.crg-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: calc(100% - 24px);
+  margin: 0 0 24px;
+  padding: 28px;
+  background: var(--crg-surface);
+  border: 1px solid var(--crg-line);
+  border-top: 4px solid var(--crg-primary);
+}
+.crg-quote .crg-icon { color: var(--crg-icon); }
+.crg-quote blockquote { margin: 0; flex: 1; }
+.crg-quote blockquote p { margin: 0; font-size: var(--crg-text-body-lg); line-height: var(--crg-leading-body-lg); color: var(--crg-text); font-style: normal; font-weight: 400; }
+.crg-quote figcaption { display: grid; gap: 2px; }
+.crg-quote figcaption b { font-weight: 700; }
+.crg-quote figcaption span { color: var(--crg-text-muted); font-size: .9375rem; }
+
+/* Case studies list -------------------------------------------------- */
+
+.crg-cases {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 2px solid var(--crg-text);
+}
+.crg-cases li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--crg-line-strong);
+}
+.crg-cases b { font-weight: 600; }
+.crg-cases span { font-family: var(--crg-font-mono); font-size: .8125rem; color: var(--crg-text-muted); white-space: nowrap; }
+@media (min-width: 768px) { .crg-cases { grid-template-columns: 1fr 1fr; column-gap: 40px; } }
+@media (min-width: 1200px) { .crg-cases { grid-template-columns: repeat(3, 1fr); } }
+
+/* About: team ---------------------------------------------------------- */
+
+.crg-team {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0 24px;
+  border-top: 2px solid var(--crg-text);
+}
+.crg-team li { display: grid; padding: 12px 0; border-bottom: 1px solid var(--crg-line-strong); }
+.crg-team b { font-weight: 600; color: var(--crg-text); }
+.crg-team span { font-size: .9375rem; color: var(--crg-text-muted); }
+
+.crg-contact__note { font-size: .9375rem; padding-top: 16px; border-top: 1px solid var(--crg-line-strong); }
+.crg-contact__list a { color: var(--crg-text); }
+.crg-contact__list a:hover { color: var(--crg-link); }
+/* Neutralise Intera's blockquote styling inside testimonial cards */
+.crg-quote blockquote {
+  padding: 0;
+  border: 0 !important; /* Intera sets border-left with !important */
+  background: none;
+  font-style: normal;
+  font-size: inherit;
+  box-shadow: none;
+}
+.crg-quote blockquote::before,
+.crg-quote blockquote::after { display: none; content: none; }

@@ -33,6 +33,8 @@
     ['.crg-steps', ':scope > li'],
     ['.crg-serve__list', ':scope > li'],
     ['.crg-checks', ':scope > li'],
+    ['.crg-cases', ':scope > li'],
+    ['.crg-team', ':scope > li'],
     ['.crg-footer .footer-top .row', ':scope > [class*="col-"]']
   ];
 
@@ -166,17 +168,21 @@
    * --------------------------------------------------------------- */
   var hero = document.querySelector('[data-slideshow]');
   var paused = false;
-  var pauseBtn = document.querySelector('[data-motion-pause]');
+  var pauseBtns = document.querySelectorAll('[data-motion-pause]');
 
   function setPaused(value) {
     paused = value;
     root.classList.toggle('crg-paused', paused);
-    if (pauseBtn) {
-      pauseBtn.setAttribute('aria-pressed', String(paused));
-      pauseBtn.setAttribute('aria-label', paused ? 'Play animations' : 'Pause animations');
-    }
+    try { localStorage.setItem('crg-motion-paused', paused ? '1' : '0'); } catch (e) {}
+    pauseBtns.forEach(function (btn) {
+      btn.setAttribute('aria-pressed', String(paused));
+      btn.setAttribute('aria-label', paused ? 'Play animations' : 'Pause animations');
+    });
   }
-  if (pauseBtn) pauseBtn.addEventListener('click', function () { setPaused(!paused); });
+  pauseBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () { setPaused(!paused); });
+  });
+  try { if (localStorage.getItem('crg-motion-paused') === '1') setPaused(true); } catch (e) {}
 
   if (hero) {
     var slides = hero.querySelectorAll('.crg-slide');

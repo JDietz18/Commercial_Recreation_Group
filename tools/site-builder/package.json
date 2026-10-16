@@ -1,0 +1,12 @@
+{
+  "name": "crg-site-builder",
+  "private": true,
+  "description": "Generates the CRG site's pages and trimmed template CSS",
+  "type": "module",
+  "scripts": {
+    "build": "python3 build.py ../../site && node purge.mjs ../../site"
+  },
+  "devDependencies": {
+    "purgecss": "6.0.0"
+  }
+}

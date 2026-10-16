@@ -34,9 +34,7 @@ jobs:
         env:
           BASE: /${{ github.event.repository.name }}/
         run: |
-          for f in site/*.html; do
-            sed -i 's#<head>#<head>\n<meta name="robots" content="noindex">#' "$f"
-          done
+          find site -name '*.html' -exec sed -i 's#<head>#<head>\n<meta name="robots" content="noindex">#' {} +
           sed -i -E "s#(href|src|srcset|imagesrcset|data-src|data-srcset)=\"/#\1=\"${BASE}#g; s#, /images/#, ${BASE}images/#g" site/404.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

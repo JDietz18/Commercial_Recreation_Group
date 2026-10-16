@@ -1,0 +1,62 @@
+# CRG website - Apache settings for CRG's PHP host (crgplay.com).
+# GitHub Pages ignores this file.
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# ---------------------------------------------------------------------------
+# Old WordPress addresses (crgplay.com before the 2026 redesign) -> new pages.
+# 301 = permanent, so search engines move their listings to the new pages.
+# NE keeps the #section part of the target from being escaped.
+# ---------------------------------------------------------------------------
+RewriteRule ^about/?$                                   /about.html [R=301,L]
+RewriteRule ^(contact|project-intake-form)(/.*)?$       /contact.html [R=301,L]
+# Each old case study (and its photo attachment pages) -> its new page.
+# Generated from case_studies.json by build.py:
+#CASE-STUDY-REDIRECTS#
+# Anything else under /case-studies/ that isn't a real file -> the list.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^case-studies(/.*)?$                        /projects.html#cases-title [R=301,L,NE]
+RewriteRule ^(project-gallery|image-carousel)(/.*)?$    /projects.html [R=301,L]
+RewriteRule ^testimonials/?$                            /#quotes-title [R=301,L,NE]
+RewriteRule ^play-systems/playground-planning-guide/?$  /products.html#design-install [R=301,L,NE]
+RewriteRule ^play-systems(/.*)?$                        /products.html#play-systems [R=301,L,NE]
+RewriteRule ^free-standing-units(/.*)?$                 /products.html#free-standing [R=301,L,NE]
+RewriteRule ^safety-surfacing(/.*)?$                    /products.html#safety-surfacing [R=301,L,NE]
+RewriteRule ^shades-shelters(/.*)?$                     /products.html#shades-shelters [R=301,L,NE]
+RewriteRule ^site-amenities(/.*)?$                      /products.html#site-amenities [R=301,L,NE]
+RewriteRule ^sports-equipment(/.*)?$                    /products.html#sports [R=301,L,NE]
+RewriteRule ^dog-parks(/.*)?$                           /products.html#dog-parks [R=301,L,NE]
+RewriteRule ^catalogs(/.*)?$                            /products.html [R=301,L]
+
+# Old Yoast sitemaps -> the new sitemap.
+RewriteRule ^(sitemap_index|page-sitemap|attachment-sitemap[0-9]*)\.xml$ /sitemap.xml [R=301,L]
+
+# One address per page: /index.html -> /
+RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
+
+# The reCAPTCHA library is used by script/quote.php only; don't serve its files.
+RedirectMatch 404 ^/script/recaptcha-master/
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/json application/xml text/xml text/plain
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+</IfModule>

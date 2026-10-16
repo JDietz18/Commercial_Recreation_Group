@@ -18,4 +18,22 @@
       });
     });
   });
+
+  // Case-study videos: a plain link to Vimeo/YouTube until clicked, so nothing
+  // loads from those sites (or sets cookies) unless the visitor asks for it.
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a.crg-video[data-embed]');
+    if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    var frame = document.createElement('iframe');
+    frame.src = link.getAttribute('data-embed');
+    frame.title = link.getAttribute('data-title') || 'Project video';
+    frame.allow = 'autoplay; fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    var box = document.createElement('div');
+    box.className = 'crg-video is-playing';
+    box.appendChild(frame);
+    link.replaceWith(box);
+    frame.focus();
+  });
 })();
